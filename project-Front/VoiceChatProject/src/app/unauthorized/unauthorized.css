@@ -1,0 +1,216 @@
+.access-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #efeafb 0%, #dfdcf4 100%);
+}
+
+.access-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255,255,255,0.35) 0%, transparent 16%),
+    radial-gradient(circle at 88% 10%, rgba(224,190,255,0.22) 0%, transparent 14%),
+    radial-gradient(circle at 50% 75%, rgba(157,137,255,0.10) 0%, transparent 22%);
+  pointer-events: none;
+}
+
+.access-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  padding: 45px 35px;
+  text-align: center;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 20px 50px rgba(128, 116, 201, 0.08);
+  overflow: hidden;
+}
+
+.access-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.22), transparent 20%),
+    radial-gradient(circle at 85% 12%, rgba(220,190,255,0.18), transparent 16%),
+    linear-gradient(145deg, rgba(255,255,255,0.04), rgba(170,155,255,0.05));
+  pointer-events: none;
+}
+
+.access-card::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  right: -90px;
+  bottom: -95px;
+  background: rgba(181, 165, 255, 0.22);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+.access-logo,
+.access-icon,
+.access-card h1,
+.access-card p,
+.access-actions {
+  position: relative;
+  z-index: 2;
+}
+
+.access-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #a89cff, #8b76ff);
+  position: relative;
+  box-shadow: 0 12px 24px rgba(137, 117, 255, 0.22);
+}
+
+.bubble {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.bubble.big {
+  width: 14px;
+  height: 14px;
+  top: 13px;
+  left: 12px;
+}
+
+.bubble.small {
+  width: 8px;
+  height: 8px;
+  bottom: 13px;
+  right: 12px;
+}
+
+.logo-text {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #25255d;
+  letter-spacing: 0.3px;
+}
+
+.access-icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 24px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 25%),
+    linear-gradient(135deg, #8f80ff, #6f59ff);
+  color: #ffffff;
+  font-size: 2rem;
+  box-shadow:
+    inset 0 0 25px rgba(255,255,255,0.14),
+    0 18px 38px rgba(117, 96, 242, 0.24);
+}
+
+.access-card h1 {
+  font-size: clamp(1.7rem, 4vw, 2rem);
+  font-weight: 800;
+  color: #25255d;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+.access-card p {
+  font-size: 1.03rem;
+  line-height: 1.9;
+  color: #6a6a96;
+  margin: 0 auto 30px;
+  max-width: 420px;
+}
+
+.access-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-login-required,
+.btn-create-account {
+  min-width: 150px;
+  padding: 14px 24px;
+  border-radius: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-login-required {
+  color: #ffffff;
+  border: none;
+  background: linear-gradient(135deg, #8fa0ff, #c39aff);
+  box-shadow: 0 10px 20px rgba(163, 145, 255, 0.24);
+}
+
+.btn-login-required:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(137, 117, 255, 0.28);
+}
+
+.btn-create-account {
+  color: #7d68d8;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 20px rgba(141, 124, 222, 0.08);
+}
+
+.btn-create-account:hover {
+  transform: translateY(-2px);
+  color: #6f59ff;
+  background: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 576px) {
+  .access-card {
+    padding: 36px 22px;
+    border-radius: 30px;
+  }
+
+  .access-card h1 {
+    font-size: 1.6rem;
+  }
+
+  .access-card p {
+    font-size: 0.98rem;
+  }
+
+  .access-actions {
+    flex-direction: column;
+  }
+
+  .btn-login-required,
+  .btn-create-account {
+    width: 100%;
+  }
+}

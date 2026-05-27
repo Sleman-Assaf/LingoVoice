@@ -1,0 +1,86 @@
+<section class="login-page py-5">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="login-card">
+
+          <div class="login-logo text-center mb-4">
+            <div class="d-inline-flex align-items-center gap-3">
+              <div class="logo-icon">
+                <span class="bubble big"></span>
+                <span class="bubble small"></span>
+              </div>
+              <span class="logo-text">LinguaVoice</span>
+            </div>
+          </div>
+
+          <div class="text-center mb-4">
+            <h1 class="login-title">Log In</h1>
+            <p class="login-subtitle">Welcome back! Please enter your details</p>
+          </div>
+
+          <form>
+
+            <div class="mb-4">
+              <label class="form-label custom-label">Email</label>
+
+              <div class="input-group custom-input-group">
+                <span class="input-group-text custom-input-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </span>
+
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control custom-input"
+                  placeholder="Your email"
+                  [(ngModel)]="loginData.email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label custom-label">Password</label>
+
+              <div class="input-group custom-input-group">
+                <span class="input-group-text custom-input-icon">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control custom-input"
+                  placeholder="Password"
+                  [(ngModel)]="loginData.password"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="alert alert-danger text-center py-3 mb-3" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
+
+            <button
+              type="button"
+              class="btn login-btn w-100 mb-4"
+              (click)="onLogin()"
+              [disabled]="loading"
+            >
+              {{ loading ? 'جاري تسجيل الدخول...' : 'Log In' }}
+            </button>
+
+            <p class="signup-text text-center mb-4">
+              Don’t have an account?
+              <a routerLink="/SignUp">Sign Up</a>
+            </p>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

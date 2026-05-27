@@ -1,0 +1,258 @@
+.lingo-course-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #efeafb 0%, #dfdcf4 100%);
+}
+
+.lingo-course-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255,255,255,0.35) 0%, transparent 16%),
+    radial-gradient(circle at 88% 10%, rgba(224,190,255,0.22) 0%, transparent 14%),
+    radial-gradient(circle at 50% 75%, rgba(157,137,255,0.10) 0%, transparent 22%);
+  pointer-events: none;
+}
+
+.hero,
+.loading,
+.empty-message,
+.error-message,
+.courses-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.hero {
+  text-align: center;
+  margin: 0 auto 50px;
+  max-width: 820px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: #25255d;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: #6a6a96;
+}
+
+.loading,
+.empty-message,
+.error-message {
+  max-width: 620px;
+  margin: 30px auto;
+  padding: 18px 22px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 10px 20px rgba(141, 124, 222, 0.08);
+  color: #6a6a96;
+}
+
+.error-message {
+  color: #c85555;
+}
+
+.empty-message {
+  color: #7d68d8;
+}
+
+.courses-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.course-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 20px 50px rgba(128, 116, 201, 0.08);
+  transition: 0.3s ease;
+}
+
+.course-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.22), transparent 20%),
+    radial-gradient(circle at 85% 12%, rgba(220,190,255,0.18), transparent 16%),
+    linear-gradient(145deg, rgba(255,255,255,0.04), rgba(170,155,255,0.05));
+  pointer-events: none;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 55px rgba(128, 116, 201, 0.14);
+}
+
+.course-image,
+.course-content {
+  position: relative;
+  z-index: 2;
+}
+
+.course-image {
+  width: 100%;
+  height: 200px;
+  background:
+    radial-gradient(circle at center, rgba(157, 137, 255, 0.20) 0%, rgba(255,255,255,0.02) 42%, transparent 72%),
+    linear-gradient(135deg, rgba(197, 190, 250, 0.45), rgba(153, 132, 255, 0.22));
+  overflow: hidden;
+}
+
+.course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* يعطي الصورة نعومة حتى لو الصورة حادة */
+.course-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(37, 37, 93, 0.10));
+  pointer-events: none;
+}
+
+.course-content {
+  padding: 26px;
+}
+
+.course-language {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  background: rgba(255,255,255,0.55);
+  color: #7d68d8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 10px 20px rgba(141, 124, 222, 0.08);
+}
+
+.course-content h3 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #292962;
+  letter-spacing: -0.3px;
+}
+
+.course-content p {
+  margin: 0 0 20px;
+  color: #73739a;
+  line-height: 1.8;
+  font-size: 0.98rem;
+}
+
+.course-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: #666690;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.course-info span {
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.36);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.view-course-btn,
+.course-content button {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background: linear-gradient(135deg, #8fa0ff, #c39aff);
+  box-shadow: 0 10px 20px rgba(163, 145, 255, 0.24);
+}
+
+.view-course-btn:hover,
+.course-content button:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(137, 117, 255, 0.28);
+}
+
+.course-content button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+  background: rgba(255,255,255,0.45);
+  color: #7d68d8;
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 20px rgba(141, 124, 222, 0.08);
+}
+
+.course-content button:disabled:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(141, 124, 222, 0.08);
+}
+
+@media (max-width: 767.98px) {
+  .lingo-course-page {
+    padding: 60px 16px;
+  }
+
+  .hero {
+    margin-bottom: 36px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.98rem;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-content {
+    padding: 22px;
+  }
+
+  .course-info {
+    flex-direction: column;
+  }
+}

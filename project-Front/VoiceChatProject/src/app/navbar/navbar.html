@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid nav-wrapper">
+
+    <a class="navbar-brand custom-logo" routerLink="/">
+      <div class="logo-icon">
+        <span class="bubble big"></span>
+        <span class="bubble small"></span>
+      </div>
+      <span class="logo-text">LinguaVoice</span>
+    </a>
+
+    <button
+      class="navbar-toggler custom-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav mx-auto mb-3 mb-lg-0 custom-links">
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/VoiceChat"
+            routerLinkActive="active"
+          >
+            LinguaVoice Chat
+          </a>
+        </li>
+<li class="nav-item">
+  <a class="nav-link" routerLink="/lingo-course" routerLinkActive="active">
+    Lingo Course
+  </a>
+</li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/AboutUs"
+            routerLinkActive="active"
+          >
+            About Us
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/ContactUs"
+            routerLinkActive="active"
+          >
+            Contact Us
+          </a>
+        </li>
+
+
+ <li *ngIf="authService.isAdmin()" class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/dashboard"
+            routerLinkActive="active"
+          >
+             Admin Dashboard
+          </a>
+        </li>
+
+
+
+
+
+      </ul>
+
+      <div class="d-flex align-items-center gap-2 nav-actions">
+
+        <ng-container *ngIf="!authService.isLoggedIn(); else loggedInUser">
+          <a routerLink="/LogIn" class="btn btn-login">
+            Log in
+          </a>
+
+          <a routerLink="/SignUp" class="btn btn-started">
+            Sign Up
+          </a>
+        </ng-container>
+
+        <ng-template #loggedInUser>
+          <span class="fw-bold user-name">
+          Welcome! <span class="text-primary">{{ authService.getUserName() }}</span> 
+          </span>
+
+          <button
+            type="button"
+            class="btn btn-login"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        </ng-template>
+
+      </div>
+    </div>
+
+  </div>
+</nav>

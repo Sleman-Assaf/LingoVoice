@@ -1,0 +1,169 @@
+<section class="voice-chat-section py-5">
+  <div class="container">
+    <div class="chat-shell mx-auto">
+
+      <div class="chat-topbar d-flex align-items-center justify-content-between">
+        <div class="top-dots d-flex gap-2">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="top-actions d-flex gap-2">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="chat-body row g-4 align-items-stretch">
+        <div class="col-lg-12">
+          <div class="call-panel h-100">
+            <div class="call-glow glow-1"></div>
+            <div class="call-glow glow-2"></div>
+
+            <div class="call-center text-center">
+
+              <!-- الطرفان -->
+              <div class="participants">
+
+                <!-- البوت -->
+                <div class="participant" [class.speaking]="isSpeaking">
+                  <div class="participant-orb">
+                    <div class="orb-ring ring-1"></div>
+                    <div class="orb-ring ring-2"></div>
+                    <div class="orb-ring ring-3"></div>
+
+                    <div class="orb-core">
+                      <i class="fa-solid fa-robot"></i>
+                    </div>
+                  </div>
+
+                  <div class="sound-bars" [class.active]="isSpeaking">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span>
+                  </div>
+
+                  <p class="participant-name">لينغو</p>
+                </div>
+
+                <!-- أيقونة المكالمة في الوسط -->
+                <div class="call-divider">
+                  <div class="call-line" [class.active]="isListening || isConnecting"></div>
+
+                  <div class="call-icon" [class.active]="isListening || isConnecting">
+                    <i class="fa-solid" [ngClass]="isConnecting ? 'fa-spinner fa-spin' : 'fa-phone'"></i>
+                  </div>
+
+                  <div class="call-line" [class.active]="isListening || isConnecting"></div>
+                </div>
+
+                <!-- المستخدم -->
+                <div class="participant" [class.speaking]="isUserSpeaking">
+                  <div class="participant-orb user-orb">
+                    <div class="orb-ring ring-1"></div>
+                    <div class="orb-ring ring-2"></div>
+                    <div class="orb-ring ring-3"></div>
+
+                    <div class="orb-core user-core">
+                      <i class="fa-solid fa-user"></i>
+                    </div>
+                  </div>
+
+                  <div class="sound-bars" [class.active]="isUserSpeaking">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span>
+                  </div>
+
+                  <p class="participant-name">أنت</p>
+                </div>
+
+              </div>
+
+              <!-- Call Timer -->
+              <div class="call-timer mt-4" *ngIf="isListening">
+                <i class="fa-solid fa-circle call-live-dot"></i>
+                <span>مكالمة جارية...</span>
+              </div>
+
+              <!-- Connecting -->
+              <div class="call-timer mt-4" *ngIf="isConnecting">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <span>جاري الاتصال...</span>
+              </div>
+
+              <!-- Status -->
+              <div class="mt-2" *ngIf="!isListening && !isConnecting">
+                <span class="status-text" [ngClass]="status">
+                  <i class="fa-solid fa-circle-dot me-1"></i>
+                  {{ status === 'disconnected' ? 'غير متصل' :
+                     status === 'connected'    ? 'متصل' :
+                     status === 'ready'        ? 'جاهز للمكالمة' :
+                     status === 'connecting'   ? 'جاري الاتصال' :
+                     status === 'error'        ? 'خطأ في الاتصال' : status }}
+                </span>
+              </div>
+
+            </div>
+
+            <!-- Download PDF Button -->
+            <div class="download-report-box text-center" *ngIf="currentSessionId && !isListening && !isConnecting">
+              <button
+                class="download-report-btn"
+                type="button"
+                (click)="downloadConversationPdf()"
+                [disabled]="isDownloadingPdf"
+                title="تحميل تقرير المحادثة PDF">
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="isDownloadingPdf ? 'fa-spinner fa-spin' : 'fa-file-arrow-down'">
+                </i>
+
+                <span>
+                  {{ isDownloadingPdf ? 'جاري تحميل التقرير...' : 'تحميل تقرير المحادثة PDF' }}
+                </span>
+              </button>
+            </div>
+
+            <!-- Controls -->
+            <div class="call-controls d-flex justify-content-center align-items-center gap-4">
+
+              <button
+                class="control-btn start-call"
+                type="button"
+                (click)="startCall()"
+                [disabled]="isListening || isConnecting"
+                title="بدء المكالمة">
+
+                <i
+                  class="fa-solid"
+                  [ngClass]="isConnecting ? 'fa-spinner fa-spin' : 'fa-phone'">
+                </i>
+              </button>
+
+              <button
+                class="control-btn mute-btn"
+                type="button"
+                *ngIf="isListening"
+                (click)="toggleMute()"
+                [class.muted]="isMuted"
+                title="كتم الصوت">
+
+                <i class="fa-solid" [ngClass]="isMuted ? 'fa-microphone-slash' : 'fa-microphone'"></i>
+              </button>
+
+              <button
+                class="control-btn end-call"
+                type="button"
+                (click)="endCall()"
+                [disabled]="!isListening && !isConnecting"
+                title="إنهاء المكالمة">
+
+                <i class="fa-solid fa-phone-slash"></i>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,159 @@
+<section class="signup-page py-5">
+  <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-12 col-sm-10 col-md-9 col-lg-7 col-xl-6">
+        <div class="signup-card">
+
+          <div class="signup-logo text-center mb-4">
+            <div class="d-inline-flex align-items-center gap-3">
+              <div class="logo-icon">
+                <span class="bubble big"></span>
+                <span class="bubble small"></span>
+              </div>
+              <span class="logo-text">LinguaVoice</span>
+            </div>
+          </div>
+
+          <div class="text-center mb-4">
+            <h1 class="signup-title">Sign Up</h1>
+            <p class="signup-subtitle">Create your account and start practicing with AI</p>
+          </div>
+
+          <form>
+            <div class="row g-4">
+
+              <div class="col-md-6">
+                <label class="form-label custom-label">First Name</label>
+                <div class="input-group custom-input-group">
+                  <span class="input-group-text custom-input-icon">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+
+                  <input
+                    type="text"
+                    name="firstName"
+                    class="form-control custom-input"
+                    placeholder="First name"
+                    [(ngModel)]="registerData.firstName"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label custom-label">Last Name</label>
+                <div class="input-group custom-input-group">
+                  <span class="input-group-text custom-input-icon">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+
+                  <input
+                    type="text"
+                    name="lastName"
+                    class="form-control custom-input"
+                    placeholder="Last name"
+                    [(ngModel)]="registerData.lastName"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label custom-label">Email</label>
+                <div class="input-group custom-input-group">
+                  <span class="input-group-text custom-input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                  </span>
+
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control custom-input"
+                    placeholder="Your email"
+                    [(ngModel)]="registerData.email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label custom-label">Password</label>
+                <div class="input-group custom-input-group">
+                  <span class="input-group-text custom-input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                  </span>
+
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control custom-input"
+                    placeholder="Password"
+                    [(ngModel)]="registerData.password"
+                    required
+                  />
+
+                  <span class="input-group-text custom-input-icon right-icon">
+                    <i class="fa-solid fa-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label custom-label">Confirm Password</label>
+                <div class="input-group custom-input-group">
+                  <span class="input-group-text custom-input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                  </span>
+
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    class="form-control custom-input"
+                    placeholder="Confirm password"
+                    [(ngModel)]="registerData.confirmPassword"
+                    required
+                  />
+
+                  <span class="input-group-text custom-input-icon right-icon">
+                    <i class="fa-solid fa-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12" *ngIf="errorMessage">
+                <div class="alert alert-danger text-center py-3 mb-0">
+                  {{ errorMessage }}
+                </div>
+              </div>
+
+              <div class="col-12" *ngIf="successMessage">
+                <div class="alert alert-success text-center py-3 mb-0">
+                  {{ successMessage }}
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button
+                  type="button"
+                  class="btn signup-btn w-100"
+                  (click)="onRegister()"
+                  [disabled]="loading"
+                >
+                  {{ loading ? 'جاري إنشاء الحساب...' : 'Create Account' }}
+                </button>
+              </div>
+
+            </div>
+
+            <p class="login-text text-center my-4">
+              Already have an account?
+              <a routerLink="/LogIn">Log In</a>
+            </p>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

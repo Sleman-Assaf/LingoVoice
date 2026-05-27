@@ -1,0 +1,205 @@
+<section class="admin-dashboard">
+  <div class="sidebar">
+    <h2>Lingo Admin</h2>
+
+    <ul>
+      <li>Dashboard</li>
+      <li>Courses</li>
+      <li>Add Course</li>
+    </ul>
+  </div>
+
+  <div class="dashboard-content">
+    <h1>Admin Dashboard</h1>
+
+   
+
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Total Users</h3>
+        <p>{{ totalUsers }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Total Courses</h3>
+        <p>{{ courses.length }}</p>
+      </div>
+    </div>
+
+    <!-- Users Section -->
+    <div class="section">
+      <h2>Users</h2>
+
+      <div *ngIf="loadingUsers">
+        Loading users...
+      </div>
+
+      <div *ngIf="!loadingUsers && users.length === 0">
+        لا يوجد مستخدمين حاليًا
+      </div>
+
+      <table *ngIf="!loadingUsers && users.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add Course Section -->
+    <div class="section">
+      <h2>Add New Course</h2>
+
+      <form (ngSubmit)="addCourse()">
+        <input
+          type="text"
+          name="title"
+          placeholder="Course Title"
+          [(ngModel)]="newCourse.title"
+          required
+        >
+
+        <input
+          type="text"
+          name="language"
+          placeholder="Language"
+          [(ngModel)]="newCourse.language"
+          required
+        >
+
+        <input
+          type="text"
+          name="level"
+          placeholder="Level"
+          [(ngModel)]="newCourse.level"
+        >
+
+        <input
+          type="number"
+          name="lessonsCount"
+          placeholder="Lessons Count"
+          [(ngModel)]="newCourse.lessonsCount"
+          min="0"
+        >
+
+        <input
+          type="text"
+          name="imageUrl"
+          placeholder="Image URL"
+          [(ngModel)]="newCourse.imageUrl"
+        >
+
+        <!-- Course External Link -->
+        <input
+          type="text"
+          name="courseUrl"
+          placeholder="Course Link مثل https://youtube.com/..."
+          [(ngModel)]="newCourse.courseUrl"
+        >
+
+        <textarea
+          name="description"
+          placeholder="Course Description"
+          [(ngModel)]="newCourse.description"
+        ></textarea>
+
+        <label class="checkbox-line">
+          <input
+            type="checkbox"
+            name="isPublished"
+            [(ngModel)]="newCourse.isPublished"
+          >
+          Published
+        </label>
+
+        <button type="submit" [disabled]="addingCourse">
+          {{ addingCourse ? 'Adding...' : 'Add Course' }}
+        </button>
+         <div class="messages">
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </div>
+      </form>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="section">
+      <h2>Courses</h2>
+
+      <div *ngIf="loadingCourses">
+        Loading courses...
+      </div>
+
+      <div *ngIf="!loadingCourses && courses.length === 0">
+        لا يوجد كورسات حاليًا
+      </div>
+
+      <table *ngIf="!loadingCourses && courses.length > 0">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Language</th>
+            <th>Level</th>
+            <th>Lessons</th>
+            <th>Published</th>
+            <th>Course Link</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <td>{{ course.title }}</td>
+            <td>{{ course.language }}</td>
+            <td>{{ course.level }}</td>
+            <td>{{ course.lessonsCount }}</td>
+            <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
+
+            <td>
+              <a
+                *ngIf="course.courseUrl"
+                [href]="course.courseUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Link
+              </a>
+
+              <span *ngIf="!course.courseUrl">
+                No Link
+              </span>
+            </td>
+
+            <td>
+              <button
+                type="button"
+                class="delete-btn"
+                (click)="deleteCourse(course.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

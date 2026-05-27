@@ -1,0 +1,66 @@
+<section class="lingo-course-page">
+
+  <div class="hero">
+    <h1>Lingo Course</h1>
+    <p>Choose a language course and start learning step by step.</p>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    جاري تحميل الكورسات...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && courses.length === 0 && !errorMessage" class="empty-message">
+    لا يوجد كورسات حاليًا
+  </div>
+
+  <div class="courses-grid" *ngIf="!loading && courses.length > 0">
+    <div class="course-card" *ngFor="let course of courses">
+
+      <div class="course-image">
+        <img 
+          [src]="course.imageUrl || 'assets/images/course-default.jpg'" 
+          [alt]="course.title"
+        >
+      </div>
+
+      <div class="course-content">
+        <span class="course-language">
+          {{ course.language }}
+        </span>
+
+        <h3>{{ course.title }}</h3>
+
+        <p>{{ course.description }}</p>
+
+        <div class="course-info">
+          <span>Level: {{ course.level }}</span>
+          <span>Lessons: {{ course.lessonsCount }}</span>
+        </div>
+
+       <a
+  *ngIf="course.courseUrl"
+  [href]="course.courseUrl"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="view-course-btn"
+>
+  View Course
+</a>
+
+<button
+  *ngIf="!course.courseUrl"
+  type="button"
+  disabled
+>
+  No Link
+</button>
+      </div>
+
+    </div>
+  </div>
+
+</section>

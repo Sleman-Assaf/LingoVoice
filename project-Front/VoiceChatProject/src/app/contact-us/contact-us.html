@@ -1,0 +1,170 @@
+<section class="contact-page py-5">
+  <div class="container">
+
+    <div class="contact-hero text-center mb-5">
+      <span class="contact-badge">Contact LinguaVoice</span>
+      <h1 class="contact-title mt-3 mb-3">Let’s Talk With You</h1>
+      <p class="contact-subtitle mx-auto">
+        Have a question, feedback, or need support? We’d love to hear from you and help you as quickly as possible.
+      </p>
+    </div>
+
+    <div class="contact-main-card">
+      <div class="row g-4 align-items-stretch">
+
+        <div class="col-lg-5">
+          <div class="contact-info-card h-100">
+            <h2 class="section-heading mb-3">Get In Touch</h2>
+            <p class="section-text mb-4">
+              Reach out to us for support, questions, or collaboration. Our team is always ready to help you.
+            </p>
+
+            <div class="contact-info-list">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h6>Email</h6>
+                  <p>support@linguavoice.com</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h6>Phone</h6>
+                  <p>+962 7X XXX XXXX</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h6>Location</h6>
+                  <p>Maan, Jordan</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-visual mt-4">
+              <div class="visual-glow glow-left"></div>
+              <div class="visual-glow glow-right"></div>
+
+              <div class="message-orb">
+                <div class="orb-ring ring-1"></div>
+                <div class="orb-ring ring-2"></div>
+                <div class="orb-core">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
+              </div>
+
+              <div class="floating-badge badge-1">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+
+              <div class="floating-badge badge-2">
+                <i class="fa-solid fa-comments"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="contact-form-card h-100">
+            <h2 class="section-heading mb-3">Send Us a Message</h2>
+            <p class="section-text mb-4">
+              Fill out the form below and we’ll get back to you soon.
+            </p>
+
+            <form (ngSubmit)="submitContact()" #contactForm="ngForm">
+
+              <div *ngIf="successMessage" class="alert alert-success mb-3">
+                {{ successMessage }}
+              </div>
+
+              <div *ngIf="errorMessage" class="alert alert-danger mb-3">
+                {{ errorMessage }}
+              </div>
+
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label class="form-label custom-label">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    class="form-control custom-input"
+                    placeholder="Your first name"
+                    [(ngModel)]="contactData.firstName"
+                    required
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label custom-label">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    class="form-control custom-input"
+                    placeholder="Your last name"
+                    [(ngModel)]="contactData.lastName"
+                    required
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label custom-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control custom-input"
+                    placeholder="Your email"
+                    [(ngModel)]="contactData.email"
+                    required
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label custom-label">Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    class="form-control custom-input"
+                    placeholder="Message subject"
+                    [(ngModel)]="contactData.subject"
+                    required
+                  >
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label custom-label">Message</label>
+                  <textarea
+                    name="message"
+                    class="form-control custom-input custom-textarea"
+                    rows="6"
+                    placeholder="Write your message..."
+                    [(ngModel)]="contactData.message"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn contact-btn" [disabled]="loading">
+                    {{ loading ? 'Sending...' : 'Send Message' }}
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

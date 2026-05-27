@@ -1,0 +1,227 @@
+<div class="hero-bg padingHero">
+
+<div class="container">
+
+<!--Hero-->
+
+    <div class="row d-flex justify-content-between align-items-center align-items-md-center ">
+
+<div class="col-xl-5 col-lg-5 col-md-10 col-12 text-center text-lg-start mx-auto mx-lg-0">
+
+<div class="hero-text">
+
+<h2 class="text-primary mb-4">Practice speaking languges with real Ai in real time</h2>
+
+<p class="text-secondary mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quisquam quis facere nobis.</p>
+
+<div class="speakBtn mb-4 d-flex justify-content-center justify-content-lg-start">
+
+<button class="btn-primary">Start speaking <i class="fa-solid fa-microphone"></i></button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-10 col-12 mx-auto">
+
+<div class="heroImg">
+
+<img class="img-fluid" src="/asset/heroMic.png" alt="MicPhoto">
+
+</div>
+
+</div>
+
+
+
+    </div>
+<!--Hero-->
+
+    
+</div>
+
+
+
+
+</div>
+
+
+
+<!--why learin ai-->
+
+<div class="whyLearnAi  py-5 body-bg">
+
+<div class="container ">
+
+<h3 class="text-primary mb-5 text-center">Why Learn languges With Ai?!</h3>
+
+<div class="row  gy-5">
+    @for (card of cards; track card.title) {
+
+<div class="col-12 col-lg-6 col-xl-4  " >
+
+ <div class="feature-card w-100">
+  <div class="icon-circle">
+    <i [class]="card.icon"></i>
+  </div>
+
+  <h3>{{card.title}}</h3>
+  <p>{{card.describtion}}</p>
+</div>
+
+    
+</div>
+
+
+    }
+
+
+
+
+
+
+
+
+
+   
+</div>
+
+<!--why learin ai-->
+
+
+<!--How Work-->
+
+<h3 class="text-primary my-5 text-center">How it Works?!</h3>
+
+<div class="row gy-5">
+    @for (card of cards2; track card.title) {
+
+<div class="col-12 col-lg-6 col-xl-4  " >
+
+ <div class="feature-card w-100">
+  <div class="icon-circle d text-center">
+    <div class="text-center">
+          <i [class]="card.icon"></i>
+    </div>
+  
+  </div>
+
+  <h3>{{card.title}}</h3>
+  <p>{{card.describtion}}</p>
+</div>
+
+    
+</div>
+
+
+    }
+
+
+
+
+
+
+
+
+
+   
+</div>
+
+
+
+
+
+
+
+<!--How Work-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<!--user REV-->
+
+
+<div class="userRev py-5">
+
+<div class="container">
+
+<h3 class="text-primary py-5 text-center">What our User Say</h3>
+
+
+
+
+<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="btnContainer text-end me-5 my-3">
+    <button  type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" class=""></button><button type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" class="ms-3"></button>
+</div>
+  <div class="carousel-inner">
+    @for (group of groupedUsers; track $index) {
+      <div class="carousel-item" [class.active]="$index === 0">
+        <div class="row g-4">
+          @for (user of group; track user.urlPhoto) {
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="testimonial-card h-100">
+                <div class="testimonial-top">
+                  <img class="testimonial-avatar" [src]="user.urlPhoto" alt="user">
+
+                  <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h3 class="testimonial-name">{{ user.userName }}</h3>
+                    <div class="testimonial-role">{{ user.userSpicalist }}</div>
+                  </div>
+                </div>
+
+                <p class="testimonial-text">
+                  {{ user.userRev }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!--user REV-->
+
+
